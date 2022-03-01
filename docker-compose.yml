@@ -41,7 +41,7 @@ services:
       context: customer-authentication
       dockerfile: Dockerfile-dev
     ports:
-      - "8071:8080"
+      - "8070:8080"
     restart: always
     depends_on:
       - database-api
@@ -116,7 +116,7 @@ services:
       context: merchant-authentication
       dockerfile: Dockerfile-dev
     ports:
-      - "8081:8080"
+      - "8080:8080"
     restart: always
     depends_on:
       - database-api
