@@ -35,10 +35,10 @@ services:
     volumes:
       - ${PROJECT_DIR}/merchant-app:/app
   #services
-  customer-authentication:
+  customer-authentication-service:
     profiles: [ "customer-app" ]
     build:
-      context: customer-authentication
+      context: customer-authentication-service
       dockerfile: Dockerfile-dev
     ports:
       - "8070:8080"
@@ -48,7 +48,7 @@ services:
     networks:
       - customer-backend
     volumes:
-      - ${PROJECT_DIR}/customer-authentication:/app
+      - ${PROJECT_DIR}/customer-authentication-service:/app
 
   customer-service:
     profiles: [ "customer-app" ]
@@ -110,10 +110,10 @@ services:
     volumes:
       - ${PROJECT_DIR}/customer-admin-service:/app
 
-  merchant-authentication:
+  merchant-authentication-service:
     profiles: [ "merchant-app" ]
     build:
-      context: merchant-authentication
+      context: merchant-authentication-service
       dockerfile: Dockerfile-dev
     ports:
       - "8080:8080"
@@ -123,7 +123,7 @@ services:
     networks:
       - merchant-backend
     volumes:
-      - ${PROJECT_DIR}/merchant-authentication:/app
+      - ${PROJECT_DIR}/merchant-authentication-service:/app
 
   merchant-service:
     profiles: [ "merchant-app" ]
