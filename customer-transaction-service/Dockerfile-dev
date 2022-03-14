@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-slim as build
+FROM openjdk:11-jdk-slim
 
 WORKDIR /app
 
@@ -7,9 +7,10 @@ COPY .mvn .mvn
 
 COPY pom.xml .
 
-RUN ./mvnw dependency:go-offline -B
-
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y inotify-tools dos2unix
+
+RUN dos2unix mvnw 
+RUN ./mvnw dependency:go-offline -B
 
 CMD ["sh", "run.sh"]
