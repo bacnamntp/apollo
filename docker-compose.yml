@@ -197,7 +197,6 @@ services:
     depends_on:
       - db
     networks:
-      - backend
       - customer-backend
       - merchant-backend
     volumes:
@@ -221,11 +220,10 @@ services:
       - ${PROJECT_DIR}/database/data:/var/lib/mysql
       - ${PROJECT_DIR}/database/init:/docker-entrypoint-initdb.d:ro
     networks:
-      - backend
+      - customer-backend
+      - merchant-backend
 
 networks:
-  frontend:
-  backend:
   customer-frontend:
   customer-backend:
   merchant-frontend:
